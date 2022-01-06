@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Flask App!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Gill Sans", sans-serif;
+        }
+        
+        #container {
+            padding: 20px;
+            margin-left: 20vw;
+            /* background-color: aquamarine; */
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            height: 40vh;
+            width: 60vw;
+        }
+        
+        #scorebar {
+            position: relative;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            padding-left: 6px;
+            height: 12vh;
+            width: 58vw;
+            background-color: lawngreen;
+            color: white;
+            font-weight: bolder;
+            font-size: 64px;
+            box-shadow: 14px 14px gray;
+        }
+        
+        #button_container {
+            margin-top: 20px;
+            position: relative;
+            height: 16vh;
+            width: 40vw;
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .button {
+            height: 10vh;
+            width: 8vw;
+        }
+        
+        button {
+            background-color: cornflowerblue;
+            height: 10vh;
+            width: 8vw;
+            font-size: xx-large;
+            box-shadow: 14px 14px gray;
+        }
+        
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="scorebar">Score is: <strong>{{count}}</strong>
+        </div>
+        <form action="/count" method="post">
+            <div id="button_container">
+                <div class="button"><button type="submit" name="like" value="like" id="like">&#x1F44d</button>
+                </div>
+                <div style="margin-left: 20px;" class="button"><button type="submit" id="dislike" name="dislike" value="dislike">&#x1F44E</button></div>
+            </div>
+        </form>
+    </div>
+    <script>
+        var score = '{{count}}';
+        console.log(score);
+        var scoreboard = document.querySelector('#scorebar');
+        if (score < 0) {
+            console.log("Under if condition")
+            scoreboard.style.backgroundColor = "orange";
+        }
+    </script>
+</body>
+
+</html>
